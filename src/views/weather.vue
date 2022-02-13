@@ -52,7 +52,7 @@ export default {
   methods: {
     findCurrentWeather: function () {
       let city = this.city
-      this.$http.get("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=d118f67c666260825a7a119163d5cac2&units=metric"
+      this.$http.get("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=d118f67c666260825a7a119163d5cac2&units=metric"
       )
           .then(response => {
             console.log(response.data)
@@ -60,7 +60,7 @@ export default {
             this.wind = response.data.wind.speed
             this.humidity = response.data.main.humidity
             this.clouds = response.data.clouds.all
-            this.icon = "http://openweathermap.org/img/w/" + response.data.weather[0].icon + ".png"
+            this.icon = "https://openweathermap.org/img/w/" + response.data.weather[0].icon + ".png"
 
             this.divVisibility = true
             // this.weather = response.data
