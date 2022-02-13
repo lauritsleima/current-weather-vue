@@ -8,7 +8,7 @@
       <button v-on:click="findCurrentWeather">Leia hetke ilm</button>
     </div>
     <br>
-    <div v-if="divVisibility">
+    <div v-if="mainDivVisibility">
       <table id="weatherTable">
         <tr>
           <td>Temp:</td>
@@ -29,6 +29,7 @@
       </table>
       <img :src=icon>
     </div>
+    <div v-if="errorDivVisibility">Sisestatud linna ei eksisteeri või tegid trükkimisel vea. Proovi uuesti.</div>
   </div>
 
 </template>
@@ -46,7 +47,9 @@ export default {
       humidity: "",
       clouds: "",
       icon: "",
-      divVisibility: false
+      mainDivVisibility: false,
+      errorDivVisibility: false
+
     }
   },
   methods: {
@@ -55,18 +58,20 @@ export default {
       this.$http.get("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=d118f67c666260825a7a119163d5cac2&units=metric"
       )
           .then(response => {
-            console.log(response.data)
             this.temp = response.data.main.temp
             this.wind = response.data.wind.speed
             this.humidity = response.data.main.humidity
             this.clouds = response.data.clouds.all
             this.icon = "https://openweathermap.org/img/w/" + response.data.weather[0].icon + ".png"
 
-            this.divVisibility = true
+            this.mainDivVisibility = true
+            this.errorDivVisibility = false
             // this.weather = response.data
           })
           .catch(error => {
             console.log(error.response)
+            this.mainDivVisibility = false
+            this.errorDivVisibility = true
           })
     }
   }
