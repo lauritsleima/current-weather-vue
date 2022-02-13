@@ -34,8 +34,6 @@
 
 </template>
 
-<!-- 21:40 - 23:18 sh javaga pusimine, projektide alustamine jne-->
-
 <script>
 export default {
   name: "weather",
@@ -69,7 +67,6 @@ export default {
             // this.weather = response.data
           })
           .catch(error => {
-            console.log(error.response)
             this.mainDivVisibility = false
             this.errorDivVisibility = true
           })
