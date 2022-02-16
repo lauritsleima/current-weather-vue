@@ -9,7 +9,7 @@
     </div>
     <br>
     <div v-if="mainDivVisibility">
-      <table id="weatherTable">
+      <table>
         <tr>
           <td>Temp:</td>
           <td>{{temp}} C</td>
@@ -35,6 +35,8 @@
   </div>
 
 </template>
+
+<!--todo: hetkel on "Rome" otsingu puhul tulemuseks Rome, US. Mõtle lahendus samade nimedega linnade puhul-->
 
 <script>
 export default {
@@ -116,6 +118,7 @@ body {
 table{
   margin-left: auto;
   margin-right: auto;
+  text-align: left;
 }
 
 td {
@@ -133,7 +136,4 @@ th {
   background-color: lightgray;
 }
 
-#weatherTable {
-  text-align: left;
-}
 </style>
